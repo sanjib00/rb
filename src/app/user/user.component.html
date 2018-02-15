@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="users.length; else loadingTemplate">
   <h3 class="text-primary">Users ({{ users.length }})</h3>
   <hr>
   <table class="table table-bordered">
@@ -24,3 +24,11 @@
       </tbody>
   </table>
 </div>
+
+<ng-template #loadingTemplate>
+  <div class="col-md-12 text-center">
+    <br>
+    <br>
+    <h2 class="text-info text-center">Fetching API, Please wait ..........</h2>
+  </div>
+</ng-template>

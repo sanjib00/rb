@@ -12,6 +12,8 @@ import { ContactComponent } from './contact/contact.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { UserComponent } from './user/user.component';
 
+import { UserService } from './user.service';
+
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -52,10 +54,10 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(
         appRoutes,
-        { enableTracing: true } // <-- debugging purposes only
+        { enableTracing: false } // <-- debugging purposes only
     )
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
