@@ -1,0 +1,44 @@
+<div class="col-md-12 text-center">
+  <h1 class="text-primary">======== Recipes ========</h1>
+</div>
+
+<div class="col-md-6">
+  <form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Name" name="name" [(ngModel)]="name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Description</label>
+      <textarea class="form-control" id="exampleInputPassword1" name="description" [(ngModel)]="description"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default" (click)="addItem()">Submit</button>
+  </form>
+</div>
+<div class="col-md-6">
+  <div *ngIf="recipes.length; else emptyTemplate">
+    <table class="table table-bordered table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let recipe of recipes; let i = index">
+        <td>{{ recipe.name }}</td>
+        <td>{{ recipe.description }}</td>
+        <td><button type="button" (click)="removeItem(i)" class="btn btn-danger">Delete</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #emptyTemplate>
+    <h3 class="text-info text-center">No Recipes</h3>
+  </ng-template>
+
+
+</div>
+
