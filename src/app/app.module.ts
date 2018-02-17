@@ -13,12 +13,15 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { UserComponent } from './user/user.component';
 
 import { UserService } from './user.service';
+import { ProductComponent } from './product/product.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'recipe', component: RecipeComponent },
   { path: 'user', component: UserComponent },
+  { path: 'product', component: ProductComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'home',
@@ -46,7 +49,9 @@ const appRoutes: Routes = [
     HomeComponent,
     ContactComponent,
     RecipeComponent,
-    UserComponent
+    UserComponent,
+    ProductComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>UID</th>
+    <th>NAME</th>
+    <th>DESCRIPTION</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products">
+    <td>{{ product.uid }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.description }}</td>
+  </tr>
+  </tbody>
+</table>
