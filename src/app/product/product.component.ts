@@ -11,7 +11,7 @@ export class ProductComponent implements OnInit {
     
     name:string = '';
     description:string = '';
-    products = [];
+    products:any = [];
 
   constructor(private _userService: UserService) { }
 
