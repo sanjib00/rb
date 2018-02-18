@@ -18,13 +18,17 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts() {
-    this._userService.getProducts().subscribe(
-            res => {
-          console.log(res);
-          this.products = res
-        }, err => console.log(err),
-        () => console.log('done loading users')
-    );
+      this._userService.testProducts().subscribe(res => {
+            this.products = res;
+              console.log(this.products)
+      });
   }
+
+    deleteItem (id, index) {
+        this._userService.deleteProduct(id).subscribe(res=> {
+           this.products.splice(index, 1);
+            this._userService.changeProduct(this.products);
+        });
+    }
 
 }

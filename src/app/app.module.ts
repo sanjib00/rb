@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 
 import { AppComponent } from './app.component';
@@ -15,6 +17,7 @@ import { UserComponent } from './user/user.component';
 import { UserService } from './user.service';
 import { ProductComponent } from './product/product.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductService } from './product.service';
 
 
 const appRoutes: Routes = [
@@ -57,12 +60,13 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     RouterModule.forRoot(
         appRoutes,
         { enableTracing: false } // <-- debugging purposes only
     )
   ],
-  providers: [UserService],
+  providers: [UserService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

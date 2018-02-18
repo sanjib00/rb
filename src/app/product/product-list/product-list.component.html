@@ -4,13 +4,15 @@
     <th>UID</th>
     <th>NAME</th>
     <th>DESCRIPTION</th>
+    <th>Action</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let product of products">
+  <tr *ngFor="let product of products; let i = index">
     <td>{{ product.uid }}</td>
     <td>{{ product.name }}</td>
     <td>{{ product.description }}</td>
+    <td><button class="btn btn-danger" (click)="deleteItem(product.id, i)">DELETE</button></td>
   </tr>
   </tbody>
 </table>

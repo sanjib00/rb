@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
 import {Observable} from 'rxjs/Rx';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'rb-product',
@@ -13,7 +14,9 @@ export class ProductComponent implements OnInit {
     description:string = '';
     products:any = [];
 
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService, private meta: Meta) {
+      //this.meta.addTag({ name: 'Content-Security-Policy', content: 'upgrade-insecure-requests' });
+  }
 
   ngOnInit() {
     this.getProducts();
@@ -26,6 +29,7 @@ export class ProductComponent implements OnInit {
                 res => {
                 console.log(res);
                 this.products.unshift(res);
+                    this._userService.changeProduct(this.products);
                     this.name = '';
                     this.description = '';
             }, err => console.log(err),
@@ -37,7 +41,8 @@ export class ProductComponent implements OnInit {
         this._userService.getProducts().subscribe(
                 res => {
                 console.log(res);
-                this.products = res
+                this.products = res;
+                this._userService.changeProduct(this.products);
             }, err => console.log(err),
             () => console.log('done loading users')
         );

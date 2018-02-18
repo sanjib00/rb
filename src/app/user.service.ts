@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -11,6 +13,9 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
+
+  private products = new BehaviorSubject([]);
+  //product = this.products.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -24,6 +29,18 @@ export class UserService {
 
   saveProduct(data) {
     return this.http.post('http://test-api.com/api/products', data, httpOptions);
+  }
+
+  deleteProduct(id) {
+    return this.http.delete('http://test-api.com/api/products/' + id, httpOptions);
+  }
+
+  changeProduct(product) {
+    this.products.next(product);
+  }
+
+  testProducts() {
+    return this.products.asObservable();
   }
 
 }
